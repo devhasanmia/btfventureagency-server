@@ -26,12 +26,21 @@ export interface ISuperAdminConfig {
   password: string;
   role: string;
 }
+
+
+export interface ICloudinary {
+  cloudinary_cloud_name: string
+  cloudinary_api_key: string
+  cloudinary_api_secret: string
+}
+
 export interface IConfig {
   app: IAppConfig;
   database: IDatabaseConfig;
   jwt: IJwtConfig;
   bcrypt: IBcryptConfig;
   superAdmin: ISuperAdminConfig;
+  cloudinary: ICloudinary;
 }
 
 const config: IConfig = {
@@ -51,12 +60,17 @@ const config: IConfig = {
   bcrypt: {
     salt_rounds: parseInt(process.env.BCRYPT_SALT_ROUNDS || "10", 10),
   },
-   superAdmin: {
+  superAdmin: {
     name: process.env.SUPER_ADMIN_NAME || "SUPER ADMIN",
     email: process.env.SUPER_ADMIN_EMAIL || "superadmin@tour-management.com",
     password: process.env.SUPER_ADMIN_PASSWORD || "12345678",
     role: process.env.SUPER_ADMIN_ROLE || "SUPER_ADMIN",
   },
+  cloudinary: {
+    cloudinary_cloud_name: process.env.CLOUDINARY_CLOUD_NAME as string,
+    cloudinary_api_key: process.env.CLOUDINARY_API_KEY as string,
+    cloudinary_api_secret: process.env.CLOUDINARY_API_SECRET as string
+  }
 };
 
 export default config;

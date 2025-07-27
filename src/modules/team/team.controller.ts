@@ -6,8 +6,8 @@ import { TeamServices } from "./team.services";
 
 // ✅ Create Team Member
 const createTeamMember = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const member = await TeamServices.createTeamMember(req.body);
-
+    console.log(req.file, req.body)
+    const member = await TeamServices.createTeamMember(req.file, req.body);
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
         success: true,

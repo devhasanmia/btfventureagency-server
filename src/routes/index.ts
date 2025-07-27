@@ -3,6 +3,7 @@ import { UserRoutes } from "../modules/user/user.route";
 import { authRoutes } from "../modules/auth/auth.route";
 import { TeamRoutes } from "../modules/team/team.route";
 import { RecentlyWorkingRoutes } from "../modules/recentlyWorking/recentlyworking.route";
+import { ServiceRoutes } from "../modules/services/services.route";
 
 export const router = Router();
 
@@ -21,6 +22,10 @@ const routesConfig = [
     },{
         path: "/recently-working",
         router: RecentlyWorkingRoutes
+    },
+    {
+        path: "/service",
+        router: ServiceRoutes
     }
 ];
 

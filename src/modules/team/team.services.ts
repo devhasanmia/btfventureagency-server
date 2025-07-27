@@ -2,12 +2,30 @@ import { Team } from "./team.model";
 import { ITeam } from "./team.interface";
 import AppError from "../../errorHandler/AppError";
 import httpStatus from "http-status-codes"
+import { sendImage } from "../../config/cloudinary.config";
 
 // ✅ Create a new team member
-const createTeamMember = async (payload: ITeam) => {
+const createTeamMember = async (file: any, payload: ITeam) => {
+    console.log(payload)
     const isEmailExists = await Team.findOne({ email: payload.email });
     if (isEmailExists) {
         throw new AppError(httpStatus.BAD_REQUEST, "Team member with this email already exists")
+    }
+    const randomString = (length = 5) => {
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let result = "";
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(
+                Math.floor(Math.random() * characters.length)
+            );
+        }
+        return result;
+    };
+    const imagePath = file ? file.path : null;
+    if (imagePath) {
+        const imageName = `${payload.name}-${randomString()}`;
+        const { secure_url } = await sendImage(imagePath, imageName);
+        payload.picture = secure_url;
     }
     const member = await Team.create(payload);
     return member;
