@@ -6,8 +6,7 @@ import { RecentlyWorkingServices } from "./recentlyworking.services"; // adjust 
 
 // ✅ Create RecentlyWorking
 const createRecentlyWorking = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-  const result = await RecentlyWorkingServices.createRecentlyWorking(req.body);
-
+  const result = await RecentlyWorkingServices.createRecentlyWorking(req.file, req.body);
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,
