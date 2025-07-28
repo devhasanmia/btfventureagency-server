@@ -28,7 +28,7 @@ const createRecentlyWorking = async (file: any, payload: IRecentlyWorking) => {
 
 // ✅ Get all RecentlyWorking
 const getAllRecentlyWorking = async () => {
-  return await RecentlyWorking.find();
+  return await RecentlyWorking.find().sort({"updatedAt": "desc"});
 };
 
 // ✅ Get a single RecentlyWorking by ID

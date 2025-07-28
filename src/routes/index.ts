@@ -4,6 +4,7 @@ import { authRoutes } from "../modules/auth/auth.route";
 import { TeamRoutes } from "../modules/team/team.route";
 import { RecentlyWorkingRoutes } from "../modules/recentlyWorking/recentlyworking.route";
 import { ServiceRoutes } from "../modules/services/services.route";
+import { ContactRoutes } from "../modules/contact/contact.route";
 
 export const router = Router();
 
@@ -26,6 +27,9 @@ const routesConfig = [
     {
         path: "/service",
         router: ServiceRoutes
+    },{
+        path: "/contact",
+        router: ContactRoutes
     }
 ];
 
