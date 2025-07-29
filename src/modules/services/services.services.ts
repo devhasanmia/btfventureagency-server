@@ -44,6 +44,8 @@ const deleteService = async (id: string) => {
     return deleted;
 };
 
+
+
 export const ServiceServices = {
     createService,
     getAllServices,
