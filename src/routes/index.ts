@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { UserRoutes } from "../modules/user/user.route";
 import { authRoutes } from "../modules/auth/auth.route";
 import { TeamRoutes } from "../modules/team/team.route";
 import { RecentlyWorkingRoutes } from "../modules/recentlyWorking/recentlyworking.route";
@@ -13,10 +12,10 @@ import { SocialRoutes } from "../modules/social/social.route";
 export const router = Router();
 
 const routesConfig = [
-    {
-        path: "/user",
-        router: UserRoutes,
-    },
+    // {
+    //     path: "/user",
+    //     router: UserRoutes,
+    // },
     {
         path: "/auth",
         router: authRoutes

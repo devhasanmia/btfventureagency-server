@@ -1,5 +1,5 @@
 import { JwtPayload } from "jsonwebtoken";
-import { IsActive, IUser } from "../modules/user/user.interface";
+import { IUser } from "../modules/user/user.interface";
 import { generateToken, verifyToken } from "./jwt";
 import config from "../config";
 import AppError from "../errorHandler/AppError";
@@ -7,9 +7,9 @@ import User from "../modules/user/user.model";
 import httpStatus from "http-status-codes"
 export const createUserToken = (user: Partial<IUser>) => {
   const jwtPayload = {
-    userId: user._id,
     email: user.email,
-    role: user.role,
+    name: user.name,
+    picture: user.picture
   };
   const accessToken = generateToken(
     jwtPayload as JwtPayload,
@@ -37,19 +37,9 @@ export const refreshAccessToken = async (refreshToken: string) => {
   if (!isUserExist) {
     throw new AppError(httpStatus.BAD_REQUEST, "User does Not Exist");
   }
-  if (isUserExist.isActive === IsActive.SUSPENDED) {
-    throw new AppError(
-      httpStatus.BAD_REQUEST,
-      `User is ${isUserExist.isActive}`
-    );
-  }
-  if (isUserExist.isDeleted) {
-    throw new AppError(httpStatus.BAD_REQUEST, "User is Deleted");
-  }
   const jwtPayload = {
     userId: isUserExist._id,
     email: isUserExist.email,
-    role: isUserExist.role,
   };
   const accessToken = generateToken(
     jwtPayload,

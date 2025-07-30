@@ -1,14 +1,15 @@
 import { Router } from "express";
 import { ServiceController } from "./services.controller";
+import { checkAuth } from "../../middleware/checkAuth";
 
 const router = Router();
 
 // Routes
-router.post("/create", ServiceController.createService);
+router.post("/create", checkAuth(), ServiceController.createService);
 router.get("/", ServiceController.getAllServices);
 router.get("/:id", ServiceController.getSingleService);
-router.patch("/:id", ServiceController.updateService);
-router.delete("/:id", ServiceController.deleteService);
+router.put("/:id", checkAuth(), ServiceController.updateService);
+router.delete("/:id",checkAuth(), ServiceController.deleteService);
 
 // Export router
 export const ServiceRoutes = router;

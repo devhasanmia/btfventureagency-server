@@ -4,16 +4,13 @@ import { verifyToken } from "../utils/jwt";
 import config from "../config";
 import { JwtPayload } from "jsonwebtoken";
 
-export const checkAuth = (...authRoles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
+export const checkAuth = () => async (req: Request, res: Response, next: NextFunction) => {
     try {
         const accessToken = req.headers.authorization;
         if (!accessToken) {
-            throw new AppError(403, "No Token Recieved")
+            throw new AppError(403, "Unauthenticated: No token provided")
         }
         const verifiedToken = verifyToken(accessToken, config.jwt.secret) as JwtPayload;
-        if (!authRoles.includes(verifiedToken.role)) {
-            throw new AppError(403, "You are not permitted to view this route!!!")
-        }
         req.user = verifiedToken 
         next()
     } catch (error) {

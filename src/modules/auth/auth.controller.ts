@@ -5,8 +5,8 @@ import { AuthService } from "./auth.service";
 import httpStatus from "http-status-codes";
 import { setCookie } from "../../utils/setCookie";
 
-const credentialsLogin = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const user = await AuthService.credentialsLogin(req.body);
+const login = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const user = await AuthService.login(req.body);
     setCookie(res, user)
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -45,7 +45,7 @@ const logout = catchAsync(async (req: Request, res: Response, next: NextFunction
 
 
 export const AuthController = {
-    credentialsLogin,
+    login,
     getNewAccessToken,
     logout
 }

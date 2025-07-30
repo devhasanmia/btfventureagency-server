@@ -24,7 +24,6 @@ export interface ISuperAdminConfig {
   name: string;
   email: string;
   password: string;
-  role: string;
 }
 
 
@@ -62,9 +61,8 @@ const config: IConfig = {
   },
   superAdmin: {
     name: process.env.SUPER_ADMIN_NAME || "SUPER ADMIN",
-    email: process.env.SUPER_ADMIN_EMAIL || "superadmin@tour-management.com",
-    password: process.env.SUPER_ADMIN_PASSWORD || "12345678",
-    role: process.env.SUPER_ADMIN_ROLE || "SUPER_ADMIN",
+    email: process.env.SUPER_ADMIN_EMAIL || "infobtfventureagency@gmail.com",
+    password: process.env.SUPER_ADMIN_PASSWORD || "03c7c0ace395",
   },
   cloudinary: {
     cloudinary_cloud_name: process.env.CLOUDINARY_CLOUD_NAME as string,

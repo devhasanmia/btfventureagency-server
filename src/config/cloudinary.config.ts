@@ -1,8 +1,4 @@
-import { v2 as cloudinary } from 'cloudinary';
 import config from '.';
-
-
-
 import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
 

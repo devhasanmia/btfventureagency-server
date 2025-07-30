@@ -1,15 +1,8 @@
-import { Router } from "express";
-import { UserController } from "./user.controller";
-import { validateRequest } from "../../middleware/validateRequest";
-import { UserSchema } from "./user.validation";
-import { checkAuth } from "../../middleware/checkAuth";
-import { Role } from "./user.interface";
+// import { Router } from "express";
+// import { UserController } from "./user.controller";
+// import { checkAuth } from "../../middleware/checkAuth";
 
-const router = Router();
+// const router = Router();
+// router.get("/get-all-user", checkAuth(), UserController.getAllUser);
 
-
-
-router.post("/register", validateRequest(UserSchema), UserController.createUser);
-router.get("/get-all-user", checkAuth(Role.ADMIN, Role.USER), UserController.getAllUser);
-
-export const UserRoutes = router 
+// export const UserRoutes = router 

@@ -1,15 +1,16 @@
 import { Router } from "express";
 import { TeamController } from "./team.controller";
 import { upload } from "../../config/cloudinary.config";
+import { checkAuth } from "../../middleware/checkAuth";
 
 const router = Router();
 
 // Routes
-router.post("/create", upload.single("picture"), TeamController.createTeamMember);
+router.post("/create", checkAuth(), upload.single("picture"), TeamController.createTeamMember);
 router.get("/", TeamController.getAllTeamMembers);
 router.get("/:id", TeamController.getSingleTeamMember);
-router.patch("/:id", TeamController.updateTeamMember);
-router.delete("/:id", TeamController.deleteTeamMember);
+router.patch("/:id", checkAuth(), TeamController.updateTeamMember);
+router.delete("/:id", checkAuth(), TeamController.deleteTeamMember);
 
 // Export router
 export const TeamRoutes = router;
