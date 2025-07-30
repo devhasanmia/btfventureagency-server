@@ -12,10 +12,6 @@ import { SocialRoutes } from "../modules/social/social.route";
 export const router = Router();
 
 const routesConfig = [
-    // {
-    //     path: "/user",
-    //     router: UserRoutes,
-    // },
     {
         path: "/auth",
         router: authRoutes
