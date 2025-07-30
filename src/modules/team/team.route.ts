@@ -9,7 +9,7 @@ const router = Router();
 router.post("/create", checkAuth(), upload.single("picture"), TeamController.createTeamMember);
 router.get("/", TeamController.getAllTeamMembers);
 router.get("/:id", TeamController.getSingleTeamMember);
-router.patch("/:id", checkAuth(), TeamController.updateTeamMember);
+router.put("/:id", checkAuth(), TeamController.updateTeamMember);
 router.delete("/:id", checkAuth(), TeamController.deleteTeamMember);
 
 // Export router
