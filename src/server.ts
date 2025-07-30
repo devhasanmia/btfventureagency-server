@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import app from "./app";
 import config from "./config";
 import { seedSuperAdmin } from "./utils/seedSuperAdmin";
+import ensureDefaultSocialLinks from "./utils/ensureDefaultSocialLinks";
 
 const PORT = config.app.port
 let server: ReturnType<typeof app.listen> | null = null;
@@ -21,6 +22,7 @@ async function main() {
     server = app.listen(PORT, () => {
       console.log(`🚀 Server is running on http://localhost:${PORT}`);
     });
+    await ensureDefaultSocialLinks();
   } catch (error) {
     console.error("❌ Failed to start server:", error);
     process.exit(1);
