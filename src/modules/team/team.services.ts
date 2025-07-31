@@ -6,7 +6,6 @@ import { sendImage } from "../../config/cloudinary.config";
 
 // ✅ Create a new team member
 const createTeamMember = async (file: any, payload: ITeam) => {
-    console.log(payload)
     const isEmailExists = await Team.findOne({ email: payload.email });
     if (isEmailExists) {
         throw new AppError(httpStatus.BAD_REQUEST, "Team member with this email already exists")

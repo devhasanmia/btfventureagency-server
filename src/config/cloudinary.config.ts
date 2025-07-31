@@ -16,7 +16,6 @@ export const sendImage = (
   path: string,
   imageName: string
 ): Promise<CloudinaryUploadResult> => {
-  console.log(path, imageName);
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload(path, (error, result) => {
       if (error) {

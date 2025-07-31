@@ -12,8 +12,7 @@ const RecentlyWorkingSchema: Schema = new Schema<IRecentlyWorking>({
     },
     description: {
         type: String,
-        required: true,
-        maxlength: 100
+        required: true
     },
     launch: {
         type: String,
